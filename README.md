@@ -1,4 +1,5 @@
 ## Usage
+```
 Steps To Run This Repo:
     Step1: clone This Repo by cmd 
         ```git clone https://github.com/lhtRaghkumarTentu/Blog-management.git```
@@ -8,3 +9,4 @@ Steps To Run This Repo:
         ```npm i```
     Step4: Start server by cmd 
         ```npm start```
+```
