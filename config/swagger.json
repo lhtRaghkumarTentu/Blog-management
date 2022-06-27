@@ -1,0 +1,269 @@
+{
+        "swagger": "2.0",
+        "info": {
+            "version": "1.0",
+            "title": "Blog MicroService",
+            "description": "MicroService for Blog Management in the system",
+            "license": {
+                "name": "RaghuKumar",
+                "url": "http://rktechnologies.com"
+            }
+        },
+        "schemes": [
+            "http"
+        ],
+        "consumes": [
+            "application/json"
+        ],
+        "produces": [
+            "application/json"
+        ],
+        "paths": {
+            "/blog/create": {
+                "post": {
+                    "description": "For creating a New Blog",
+                    "summary": "we can create New Blog By This Api",
+                    "tags": [
+                        "Blog"
+                    ],
+                    "type": "object",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [{
+                        "in": "body",
+                        "name": "body",
+                        "description": "data for Create a new Blog",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/createBlog"
+                        }
+                    }],
+                    "responses": {
+                        "200": {
+                            "description": "Success"
+                        },
+                        "404": {
+                            "description": "Not Found"
+                        },
+                        "500": {
+                            "description": "Server Error"
+                        }
+                    }
+                }
+            },
+            "/blog/details": {
+                "get": {
+                    "description": "For Fetch Blog Details",
+                    "summary": "we can get blogDetails By This Api",
+                    "tags": [
+                        "Blog"
+                    ],
+                    "type": "object",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [{
+                        "in": "query",
+                        "name": "id",
+                        "description": "Blog Id Fetch Blog details",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/blogDetails"
+                        }
+                    }],
+                    "responses": {
+                        "200": {
+                            "description": "Success"
+                        },
+                        "404": {
+                            "description": "Not Found"
+                        },
+                        "500": {
+                            "description": "Server Error"
+                        }
+                    }
+                }
+            },
+            "/blog/list": {
+                "get": {
+                    "description": "For fetching list of Blogs",
+                    "summary": "we can Fetch List of Blogs By This Api",
+                    "tags": [
+                        "Blog"
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Success"
+                        },
+                        "404": {
+                            "description": "Not Found"
+                        },
+                        "500": {
+                            "description": "Server Error"
+                        }
+                    }
+                }
+            },
+            "/blog/update": {
+                "put": {
+                    "description": "For Update Blog",
+                    "summary": "we can Update Blog By This Api",
+                    "tags": [
+                        "Blog"
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [{
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "description": "required data from body",
+                        "schema": {
+                            "$ref": "#/definitions/updateBlog"
+                        }
+                    }],
+                    "responses": {
+                        "200": {
+                            "description": "Success"
+                        },
+                        "404": {
+                            "description": "Not Found"
+                        },
+                        "500": {
+                            "description": "Server Error"
+                        }
+                    }
+                }
+            },
+            "/blog/delete": {
+                "delete": {
+                    "description": "For Delete Blog",
+                    "summary": "we can Update Blog By This Api",
+                    "tags": [
+                        "Blog"
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "parameters": [{
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "description": "required data from query",
+                        "schema": {
+                            "$ref": "#/definitions/deleteBlog"
+                        }
+                    }],
+                    "responses": {
+                        "200": {
+                            "description": "Success"
+                        },
+                        "404": {
+                            "description": "Not Found"
+                        },
+                        "500": {
+                            "description": "Server Error"
+                        }
+                    }
+                }
+            }
+        },
+        "definitions": {
+            "ApiResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "createBlog": {
+                "type": "object",
+                "properties": {
+                    "tittle": {
+                        "type": "string",
+                        "required": true
+                    },
+                    "description": {
+                        "type": "string",
+                        "required": false
+                    },
+                    "author": {
+                        "type": "string",
+                        "required": true
+                    }
+                },
+                "xml": {
+                    "name": "createBlog"
+                }
+            },
+            "blogDetails": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "required": true
+                    }
+                },
+                "xml": {
+                    "name": "blogDetails"
+                }
+            },
+            "blogList": {
+                "type": "object",
+                "properties": {
+                },
+                "xml": {
+                    "name": "blogList"
+                }
+            },
+            "updateBlog": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "required": true
+                    },
+                    "tittle": {
+                        "type": "string",
+                        "required": false
+                    },
+                    "description": {
+                        "type": "string",
+                        "required": false
+                    },
+                    "author": {
+                        "type": "string",
+                        "required": false
+                    }
+                },
+                "xml": {
+                    "name": "updateBlog"
+                }
+            },
+            "deleteBlog": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "required": true
+                    }
+                },
+                "xml": {
+                    "name": "deleteBlog"
+                }
+            }
+        }
+    }
